@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-	{% if link_url %}
-		<a href="{{ link_url }}">{{ link_txt }}</a>
-	{% endif %}
-
 	{% if message %}
 		<h2>{{ message }}</h2>
 	{% endif %}

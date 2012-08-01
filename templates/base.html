@@ -32,7 +32,20 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-					<a href="#" class="brand">Uploadipy</a>
+					<a href="#" class="brand">Dagkot</a>
+					
+					<ul class="nav pull-right">
+						{% if user %}
+							<li>
+								<a href="#">{{ nickname }}</a>
+							</li>
+							<li class="divider-vertical">
+							</li>
+						{% endif %}
+						<li>
+							<a href="{{ auth_url }}">{{ auth_txt }}</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
