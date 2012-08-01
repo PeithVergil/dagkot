@@ -1,0 +1,22 @@
+application: dagkot
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /js
+  static_dir: js
+- url: /css
+  static_dir: css
+- url: /less
+  static_dir: less
+- url: /
+  script: home.app
+- url: /user/.*
+  script: user.app
+  login: required
+
+libraries:
+- name: jinja2
+  version: latest

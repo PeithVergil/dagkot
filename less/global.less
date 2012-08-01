@@ -1,0 +1,28 @@
+@fontSize: 14px;
+
+.SimpleList {
+	list-style: none;
+	margin-left: 0;
+	margin-bottom: 0;
+}
+
+body {
+	font-size: @fontSize;
+	padding-top: 80px;
+}
+
+ul.nostyle {
+	.SimpleList;
+}
+
+ul.errorlist {
+	.SimpleList;
+	color: #FF0000;
+	font-size: 0.8em;
+}
+
+.thumbnail {
+	.actions {
+		margin-top: 9px;
+	}
+}

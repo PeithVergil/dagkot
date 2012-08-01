@@ -1,0 +1,39 @@
+body {
+	padding-top: 80px;
+}
+
+#login, #registration, .messages, .errors {
+	list-style: none;
+	margin: 0;
+}
+
+#registration .fn,
+#registration .ln {
+	display: inline-block;
+}
+
+.errorlist {
+	color: #FF0000;
+}
+
+.reg-here {
+	font-size: 2.5em;
+	margin: 60px 0;
+}
+
+.txt-centered {
+	text-align: center;
+}
+
+.uploaded-photo {
+	/*max-width: 650px;*/
+}
+
+.my-row {
+	margin-bottom: 30px;
+}
+
+.unwell {
+	background-color: #D9D9D9;
+	padding: 10px;
+}
