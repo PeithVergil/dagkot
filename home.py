@@ -24,7 +24,15 @@ class Home(base.BaseRequestHandler):
         
         self.render_html('home/post.html', **data)
         
+class Add(base.BaseRequestHandler):
+    def post(self):
+        data = {
+            'dagkot_for': self.request.get('txt_dagkot_for')
+        }
+        
+        self.render_html('home/add.html', **data)
+        
 
 app = webapp2.WSGIApplication([
-    ('/', Home)
+    ('/', Home), ('/add', Add)
 ], debug=True)

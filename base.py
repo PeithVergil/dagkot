@@ -9,23 +9,32 @@ class BaseRequestHandler(RequestHandler):
     The base class for all request handlers.
     '''
     
+    def get_context(self):
+        context = {}
+        
+        user = users.get_current_user()
+        if user:
+            context['auth_url'] = users.create_logout_url('/')
+            context['nickname'] = user.nickname()
+            context['auth_txt'] = 'Logout'
+        else:
+            context['auth_url'] = users.create_login_url('/')
+            context['auth_txt'] = 'Login'
+        context['user'] = user
+        
+        return context
+    
     @cached_property
     def jinja(self):
         return jinja2.get_jinja2(app=self.app)
         
     def render_html(self, template, **params):
-        user = users.get_current_user()
-        if user:
-            params['auth_url'] = users.create_logout_url('/')
-            params['auth_txt'] = 'Logout'
-            
-            params['nickname'] = user.nickname()
-        else:
-            params['auth_url'] = users.create_login_url('/')
-            params['auth_txt'] = 'Login'
-        params['user'] = user
+        context = self.get_context()
         
-        tpl = self.jinja.render_template(template, **params)
+        for key, val in params.items():
+            context[key] = val
+        
+        tpl = self.jinja.render_template(template, **context)
         
         self.response.write(tpl)
         

@@ -1,5 +1,13 @@
 @space: 20px;
 
+.FloatLeft {
+	float: left;
+}
+
+.ClearBoth {
+	clear: both;
+}
+
 @media (min-width:980px) {
 	body {
 		padding-top: 40px;
@@ -8,6 +16,43 @@
 
 #content {
 	padding: @space 0;
+	
+	#frm_dagkot_for {
+		#img_dagkot_for {
+			.FloatLeft;
+			
+			display: block;
+			height: 40px;
+			width: 40px;
+		}
+		
+		#div_dagkot_for {
+			.FloatLeft;
+			
+			display: block;
+			
+			#txt_dagkot_for {
+				@textsize: 24px; 
+			
+				height: 31px;
+				font-size: @textsize;
+				line-height: @textsize;
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				border-bottom: 1px solid #000;
+				border-radius:0;
+				-moz-border-radius:0;
+				-webkit-border-radius:0;
+				margin-bottom: 0;
+			}
+		}
+		
+		#dagkot_msg {
+			height: 120px;
+    		width: 320px;
+		}
+	}
 }
 
 footer {

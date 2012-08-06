@@ -11,8 +11,11 @@ handlers:
   static_dir: css
 - url: /less
   static_dir: less
-- url: /
+- url: /images
+  static_dir: images
+- url: /(add|edit|delete)?
   script: home.app
+  login: required
 - url: /user/.*
   script: user.app
   login: required

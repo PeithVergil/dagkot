@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="span12">
+			<form id="frm_dagkot_for" method="post">
+				<div>
+					<input type="text" name="dagkot_for" id="dagkot_for" placeholder="dagkot for..." value="{{ dagkot_for }}" />
+				</div>
+				<div>
+					<select id="dagkot_type" name="dagkot_type">
+						<option>Thanks Giving</option>
+						<option>Prayer</option>
+						<option>Loss</option>
+					</select>
+				</div>
+				<div>
+					<textarea id="dagkot_msg" name="dagkot_msg" placeholder="your message"></textarea>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock content %}
