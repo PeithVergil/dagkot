@@ -25,7 +25,7 @@ class Home(base.BaseRequestHandler):
         self.render_html('home/post.html', **data)
         
 class Add(base.BaseRequestHandler):
-    def post(self):
+    def get(self):
         data = {
             'dagkot_for': self.request.get('txt_dagkot_for')
         }
