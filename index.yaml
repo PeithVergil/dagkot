@@ -13,5 +13,17 @@ indexes:
 - kind: Dagkot
   properties:
   - name: author
+  - name: dagkot_date
+    direction: desc
+
+- kind: Dagkot
+  properties:
+  - name: author
   - name: postdate
+    direction: desc
+
+- kind: Dagkot
+  properties:
+  - name: dagkot_author
+  - name: dagkot_date
     direction: desc

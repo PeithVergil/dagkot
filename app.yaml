@@ -13,10 +13,12 @@ handlers:
   static_dir: less
 - url: /images
   static_dir: images
-- url: /(add|edit|delete)?
+- url: /
   script: home.app
+- url: /add(/.*)?
+  script: add.app
   login: required
-- url: /user/.*
+- url: /user(/.*)?
   script: user.app
   login: required
 

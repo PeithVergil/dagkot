@@ -1,9 +1,14 @@
 from google.appengine.ext import db
 
+class Candle(db.Model):
+	candle_type = db.StringProperty()
+	candle_path = db.StringProperty()
+	candle_name = db.StringProperty()
+
 class Dagkot(db.Model):
-    type = db.StringProperty()
-    candle = db.StringProperty()
-    author = db.StringProperty()
-    message = db.StringProperty(multiline=True)
-    receiver = db.StringProperty()
-    postdate = db.DateTimeProperty(auto_now_add=True)
+    dagkot_for = db.StringProperty()
+    dagkot_type = db.StringProperty()
+    dagkot_date = db.DateTimeProperty(auto_now_add=True)
+    dagkot_author = db.StringProperty()
+    dagkot_candle = db.ReferenceProperty(Candle)
+    dagkot_message = db.StringProperty(multiline=True)

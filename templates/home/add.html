@@ -11,9 +11,8 @@
 				</div>
 				<div>
 					<select id="dagkot_type" name="dagkot_type">
-						<option>Thanks Giving</option>
+						<option>Thanks giving</option>
 						<option>Prayer</option>
-						<option>Loss</option>
 					</select>
 				</div>
 				<div>
@@ -32,7 +31,9 @@
 				<div class="actions">
 					<input type="submit" value="Save" class="btn btn-primary" />
 				</div>
-				<input type="hidden" name="dagkot_candle" id="dagkot_candle" />
+				<input type="hidden" name="dagkot_candle_type" id="dagkot_candle_type" />
+				<input type="hidden" name="dagkot_candle_path" id="dagkot_candle_path" />
+				<input type="hidden" name="dagkot_candle_name" id="dagkot_candle_name" />
 			</form>
 		</div>
 	</div>
@@ -43,12 +44,16 @@
 	
 	<script type="text/javascript">
 	$(function() {
-		var candle = $('#dagkot_candle');
+		var type = $('#dagkot_candle_type');
+		var path = $('#dagkot_candle_path');
+		var name = $('#dagkot_candle_name');
 		
 		$('#demo-htmlselect').ddslick({
 			width     : 329,
 			onSelected: function(response){
-				candle.val(response.selectedData.value);
+				path.val(response.selectedData.imageSrc);
+				type.val(response.selectedData.value);
+				name.val(response.selectedData.text);
 			}   
 		});
 	});
