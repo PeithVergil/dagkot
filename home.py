@@ -12,7 +12,7 @@ class Home(base.BaseRequestHandler):
         
         user = users.get_current_user()
         if user:
-            data['dagkots'] = Dagkot.all().filter('dagkot_author =', user.user_id()).order('-dagkot_date')
+            data['dagkots'] = Dagkot.all().filter('dagkot_author =', user).order('-dagkot_date')
         else:
             data['dagkots'] = Dagkot.all().order('-dagkot_date')
         

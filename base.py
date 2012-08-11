@@ -4,6 +4,8 @@ from webapp2 import cached_property
 from webapp2 import RequestHandler
 from webapp2_extras import jinja2
 
+# import filters
+
 class BaseRequestHandler(RequestHandler):
     '''
     The base class for all request handlers.
@@ -38,3 +40,5 @@ class BaseRequestHandler(RequestHandler):
         
         self.response.write(tpl)
         
+# j = jinja2.get_jinja2()
+# j.environment.filters['datetimeformat'] = filters.datetimeformat

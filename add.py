@@ -30,9 +30,9 @@ class Add(base.BaseRequestHandler):
         if candle_key:
             user = users.get_current_user()
             
-            dagkot = Dagkot(dagkot_author=user.user_id(), dagkot_for=dagkot_for,
-                dagkot_message=dagkot_msg, dagkot_type=dagkot_type, dagkot_candle=candle)
-            
+            dagkot = Dagkot(dagkot_author=user, dagkot_for=dagkot_for, dagkot_message=dagkot_msg,
+                dagkot_type=dagkot_type, dagkot_candle=candle)
+        
             dagkot_key = dagkot.put()
             if dagkot_key:
                 self.redirect('/')
