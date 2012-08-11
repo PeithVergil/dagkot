@@ -28,6 +28,14 @@
 							data-description="Description for candle #3">Candle 3</option>
 					</select>
 				</div>
+				<div class="author">
+					from
+					{% if user %}
+						<strong>{{ user.nickname() }}</strong>
+					{% else %}
+						<strong>Anonymous</strong>
+					{% endif %}
+				</div>
 				<div class="actions">
 					<input type="submit" value="Save" class="btn btn-primary" />
 				</div>

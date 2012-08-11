@@ -40,7 +40,12 @@
 							<div class="foot">
 								{% with author=dagkot.dagkot_author %}
 									<div class="dagkot_author">
-										from <strong>{{ author }}</strong>
+										from
+										{% if author %}
+											<strong>{{ author }}</strong>
+										{% else %}
+											<strong>Anonymous</strong>
+										{% endif %}
 									</div>
 								{% endwith %}
 								<div class="dagkot_date">

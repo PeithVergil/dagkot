@@ -17,7 +17,6 @@ handlers:
   script: home.app
 - url: /add(/.*)?
   script: add.app
-  login: required
 - url: /user(/.*)?
   script: user.app
   login: required
