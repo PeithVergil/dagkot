@@ -17,3 +17,7 @@ class Dagkot(db.Model):
     dagkot_author = db.UserProperty(auto_current_user_add=True)
     dagkot_candle = db.ReferenceProperty(Candle)
     dagkot_message = db.StringProperty(multiline=True)
+
+class Photo(db.Model):
+	photo_key = db.StringProperty()
+	photo_path = db.StringProperty()
