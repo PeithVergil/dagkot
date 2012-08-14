@@ -1,36 +1,46 @@
 import json
 
 from google.appengine.api import images
-from google.appengine.ext import blobstore
+from google.appengine.ext import blobstore, db
 from google.appengine.ext.webapp import blobstore_handlers
 
 import webapp2
 
 import base
 
-from models.dagkot import Photo
+from models.dagkot import Dagkot, Photo
 
 class UploadImages(base.BaseRequestHandler):
 	def get(self, dagkot_key):
 		data = {
-			'upload_url': blobstore.create_upload_url('/upload/handler')
+			'upload_url': blobstore.create_upload_url('/upload/handler/%s' % dagkot_key)
 		}
 
 		self.render_html('upload/upload.html', **data)
 
 class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
-	def post(self):
-		uploads = self.get_uploads('file')
-		fileinfo = uploads[0]
+	def post(self, dagkot_key):
+		data = {
+			'upload_url' : blobstore.create_upload_url('/upload/handler/%s' % dagkot_key),
+			'status'     : 'FAILED'
+		}
+		
+		dagkot = Dagkot.get(dagkot_key)
+		if dagkot:
+			uploads = self.get_uploads('file')
+			infokey = str(uploads[0].key())
 
-		# photo = Photo(photo_key=fileinfo.key(), photo_path=str(fileinfo))
+			dagkot.dagkot_pictures.append(infokey)
+
+			key = dagkot.put()
+			if key:
+				data['status'] = 'OK'
+
+		# photo = Photo(photo_key=str(fileinfo.key()), photo_path=str(fileinfo), photo_dagkot=dagkot)
 		# photo.put()
 
 		self.response.headers['Content-Type'] = 'application/json'
-		self.response.out.write(json.dumps({
-			'upload_url' : blobstore.create_upload_url('/upload/handler'),
-			'file_key'   : images.get_serving_url(fileinfo.key())
-		}))
+		self.response.out.write(json.dumps(data))
 
 # class ImageServe(base.BaseRequestHandler):
 # 	def get(self, key):
@@ -38,5 +48,5 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 # 		})
 		
 app = webapp2.WSGIApplication([
-	('/upload/images/(.+)', UploadImages), ('/upload/handler', UploadHandler)
+	('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
 ], debug=True)

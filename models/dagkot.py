@@ -17,7 +17,17 @@ class Dagkot(db.Model):
     dagkot_author = db.UserProperty(auto_current_user_add=True)
     dagkot_candle = db.ReferenceProperty(Candle)
     dagkot_message = db.StringProperty(multiline=True)
-    dagkot_pictures = db.ListProperty(db.Blob)
+    dagkot_pictures = db.StringListProperty()
+
+    # def get_pictures(self):
+    #     photos = Photo.all().filter('photo_dagkot =', self.key())
+
+    #     keys = []
+    #     for photo in photos:
+    #         photo_k = db.Key.from_path('Photo', photo.photo_key)
+    #         keys.append(photo_k)
+
+    #     return db.get(keys)
 
 class Photo(db.Model):
     photo_key = db.StringProperty()

@@ -65,9 +65,9 @@ $(function() {
 		up.settings.url = res.upload_url;
 	});
 
-	// uploader.bind('UploadComplete', function(up, files) {
-	// 	alert('DONE!');
-	// });
+	uploader.bind('UploadComplete', function(up, files) {
+		window.location = '/'
+	});
 
 	// Client side form validation
 	$('form').submit(function(e) {

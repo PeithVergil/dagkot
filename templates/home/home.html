@@ -25,6 +25,13 @@
 				{% for dagkot in dagkots %}
 					<li class="dagkot">
 						<div class="inner">
+							{% if dagkot.dagkot_pictures %}
+								<div class="hair">
+									{% for pic in dagkot.dagkot_pictures %}
+										<img src="/_ah/img/{{ pic }}" />
+									{% endfor %}
+								</div>
+							{% endif %}
 							<div class="head">
 								<div class="candle-container">
 									{% with candle=dagkot.dagkot_candle %}
