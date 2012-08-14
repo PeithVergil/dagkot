@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block head_extras %}
+<!-- Uploadify CSS -->
+<!-- <link type="text/css" rel="stylesheet" href="/css/uploadify/uploadify.css" /> -->
+<!-- Uploadify CSS -->
+
+<!-- Uploadify JS -->
+<!-- <script type="text/javascript" src="/js/uploadify/uploadify.js"></script> -->
+<!-- Uploadify JS -->
+
+<!-- File uploader JS -->
+<link type="text/css" rel="stylesheet" href="/js/fileuploader/jquery.plupload.queue/css/jquery.plupload.queue.css" />
+
+<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+
+<script type="text/javascript" src="/js/fileuploader/plupload.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.html4.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.html5.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.gears.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.flash.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.silverlight.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.browserplus.js"></script>
+
+<script type="text/javascript" src="/js/fileuploader/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<!-- File uploader JS -->
+{% endblock head_extras %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="span12">
+			<form enctype="multipart/form-data">
+				<div id="uploader">
+					<p>You browser doesn't have HTML5 support.</p>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block body_extras %}
+<script>
+$(function() {
+	$("#uploader").pluploadQueue({
+		// General settings
+		url           : '{{ upload_url }}',
+		runtimes      : 'html5',
+		max_file_size : '10mb',
+		chunk_size    : '1mb',
+		unique_names  : true,
+
+		// Specify what files to browse for
+		filters: [
+			{title : "Image files", extensions : "png,jpg,gif"}
+		],
+
+		// Flash settings
+		flash_swf_url : '/js/fileuploader/plupload.flash.swf'
+	});
+
+	var uploader = $('#uploader').pluploadQueue();
+
+	uploader.bind('FileUploaded', function(up, file, response) {
+		var res = $.parseJSON(response.response);
+		up.settings.url = res.upload_url;
+	});
+
+	// uploader.bind('UploadComplete', function(up, files) {
+	// 	alert('DONE!');
+	// });
+
+	// Client side form validation
+	$('form').submit(function(e) {
+        // Files in queue upload them first
+        if (uploader.files.length > 0) {
+            uploader.start();
+        } else {
+            alert('You must queue at least one file.');
+        }
+        return false;
+    });
+});   
+</script>
+{% endblock body_extras %}

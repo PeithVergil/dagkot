@@ -1,10 +1,10 @@
+import json
+
 from google.appengine.api import users
 
 from webapp2 import cached_property
 from webapp2 import RequestHandler
 from webapp2_extras import jinja2
-
-# import filters
 
 class BaseRequestHandler(RequestHandler):
     '''
@@ -39,6 +39,7 @@ class BaseRequestHandler(RequestHandler):
         tpl = self.jinja.render_template(template, **context)
         
         self.response.write(tpl)
-        
-# j = jinja2.get_jinja2()
-# j.environment.filters['datetimeformat'] = filters.datetimeformat
+
+    def render_json(self, data):
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.out.write(json.dumps(data))

@@ -35,7 +35,7 @@ class Add(base.BaseRequestHandler):
         
             dagkot_key = dagkot.put()
             if dagkot_key:
-                self.redirect('/')
+                self.redirect('/upload/images/%s' % dagkot_key)
             else:
                 self.redirect('/add/error')
         else:
