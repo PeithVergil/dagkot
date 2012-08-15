@@ -44,6 +44,6 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(json.dumps(data))
 		
-app = webapp2.WSGIApplication([
-	('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
+app = base.create_wsgi_app([
+    ('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
 ], debug=True)

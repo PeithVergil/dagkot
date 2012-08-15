@@ -1,7 +1,5 @@
 from google.appengine.api import users
 
-import webapp2
-
 import base
 
 from models.dagkot import Dagkot
@@ -18,6 +16,6 @@ class Home(base.BaseRequestHandler):
         
         self.render_html('home/home.html', **data)
         
-app = webapp2.WSGIApplication([
+app = base.create_wsgi_app([
     ('/', Home)
 ], debug=True)

@@ -49,8 +49,6 @@ class AddError(base.BaseRequestHandler):
         }
         self.render_html('home/landing.html', **data)
         
-        
-
-app = webapp2.WSGIApplication([
+app = base.create_wsgi_app([
     ('/add', Add), ('/add/error', AddError)
 ], debug=True)
