@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block head_extras %}
-<!-- Wookmark -->
-<script type="text/javascript" src="/js/wookmark/wookmark.js"></script>
-<!-- Wookmark -->
-{% endblock head_extras %}
-
 {% block content %}
 	<div class="row-fluid">
 		<div class="span12">
 			<form id="frm_dagkot_for" method="get" action="/add">
 				<img id="img_dagkot_for" src="/images/candle-default.gif" />
-				<div ID="div_dagkot_for">
+				<div id="div_dagkot_for">
 					<input type="text" name="txt_dagkot_for" id="txt_dagkot_for" placeholder="dagkot for..." />
+				</div>
+				<div id="btn_dagkot_add">
+					<button class="btn btn-large btn-primary">
+						<i class="icon-plus icon-white"></i>
+						Add
+					</button>
 				</div>
 				<div class="ClearBoth"></div>
 			</form>
@@ -27,8 +27,8 @@
 						<div class="inner">
 							{% if dagkot.dagkot_pictures %}
 								<div class="hair">
-									{% for pic in dagkot.dagkot_pictures %}
-										<img src="/_ah/img/{{ pic }}" />
+									{% for pic in dagkot.get_pictures() %}
+										<img src="{{ pic }}" />
 									{% endfor %}
 								</div>
 							{% endif %}
@@ -70,8 +70,12 @@
 {% endblock content %}
 
 {% block body_extras %}
+<!-- Wookmark -->
+<script type="text/javascript" src="/js/wookmark/wookmark.js"></script>
+<!-- Wookmark -->
+
 <script type="text/javascript">
-$(function() {
+$(window).load(function() {
 	$('ul.dagkots li.dagkot').wookmark({
 		autoResize: true,
 		container: $('#dagkots'),

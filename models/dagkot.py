@@ -1,3 +1,4 @@
+from google.appengine.api import images
 from google.appengine.ext import db
 
 # class User(db.Model):
@@ -19,15 +20,15 @@ class Dagkot(db.Model):
     dagkot_message = db.StringProperty(multiline=True)
     dagkot_pictures = db.StringListProperty()
 
-    # def get_pictures(self):
-    #     photos = Photo.all().filter('photo_dagkot =', self.key())
+    def get_pictures(self):
+        count = 0
+        for picture in self.dagkot_pictures:
+            count += 1
 
-    #     keys = []
-    #     for photo in photos:
-    #         photo_k = db.Key.from_path('Photo', photo.photo_key)
-    #         keys.append(photo_k)
-
-    #     return db.get(keys)
+            if count == 1:
+                yield images.get_serving_url(picture, 205)
+            else:
+                yield images.get_serving_url(picture, 48, True)
 
 class Photo(db.Model):
     photo_key = db.StringProperty()
