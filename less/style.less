@@ -63,88 +63,96 @@
 					}
 				}
 			}
+			.hero-unit {
+			    background-color: transparent;
+			    border-radius: 0;
+			    margin-bottom: 0;
+			    padding: 0;
 
-			.home_dagkot_desc {
-				margin-bottom: 70px;
+			    .home_dagkot_desc {
+					margin-bottom: 45px;
 
-				@margin: 15px;
+					@margin: 15px;
 
-				h3 {
-					margin-bottom: @margin;
+					h3 {
+						margin-bottom: @margin;
+					}
+
+					h1 {
+						margin-bottom: @margin;
+					}
 				}
 
-				h1 {
-					margin-bottom: @margin;
+				.home_dagkot_form {
+					#frm_dagkot_for {
+						#img_dagkot_for {
+							.FloatLeft;
+							
+							display: block;
+							height: 40px;
+							width: 40px;
+						}
+						
+						#div_dagkot_for {
+							.FloatLeft;
+							
+							display: block;
+							
+							#txt_dagkot_for {
+								@textsize: 24px; 
+							
+								height: 31px;
+								font-size: @textsize;
+								line-height: @textsize;
+								border-top: none;
+								border-left: none;
+								border-right: none;
+								border-bottom: 1px solid #000;
+								border-radius:0;
+								-moz-border-radius:0;
+								-webkit-border-radius:0;
+								background-color: transparent;
+								margin-bottom: 0;
+							}
+						}
+
+						#btn_dagkot_add {
+							.FloatLeft;
+
+							margin-left: 15px;
+						}
+					}
 				}
 			}
+		}
+	}
 
-			.home_dagkot_form {
-				#frm_dagkot_for {
-					#img_dagkot_for {
-						.FloatLeft;
-						
-						display: block;
-						height: 40px;
-						width: 40px;
-					}
-					
-					#div_dagkot_for {
-						.FloatLeft;
-						
-						display: block;
-						
-						#txt_dagkot_for {
-							@textsize: 24px; 
-						
-							height: 31px;
-							font-size: @textsize;
-							line-height: @textsize;
-							border-top: none;
-							border-left: none;
-							border-right: none;
-							border-bottom: 1px solid #000;
-							border-radius:0;
-							-moz-border-radius:0;
-							-webkit-border-radius:0;
-							background-color: transparent;
-							margin-bottom: 0;
-						}
-					}
+	#frm_dagkot_for {
+		#dagkot_msg {
+			height: 120px;
+    		width: 320px;
+		}
 
-					#btn_dagkot_add {
-						.FloatLeft;
+		.author {
+			font-size: 15px;
+		}
+		
+		.actions {
+			margin-top: 20px;
+		}
 
-						margin-left: 15px;
-					}
-					
-					#dagkot_msg {
-						height: 120px;
-			    		width: 320px;
-					}
+		#demo-htmlselect {
+			margin-bottom: 9px;
 
-					.author {
-						font-size: 15px;
-					}
-					
-					.actions {
-						margin-top: 20px;
-					}
-
-					#demo-htmlselect {
-						margin-bottom: 9px;
-
-						.dd-option-image, .dd-selected-image {
-							height: 64px;
-						    width: 64px;
-						}
-						
-						.dd-option-text, .dd-selected-text {
-							font-weight: bold;
-							font-size: 18px;
-							margin: 0;
-						}
-					}
-				}
+			.dd-option-image, .dd-selected-image {
+				height: 64px;
+			    width: 64px;
+			}
+			
+			.dd-option-text, .dd-selected-text {
+				font-weight: bold;
+				font-size: 18px;
+				margin: 0;
 			}
 		}
 	}
