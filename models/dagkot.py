@@ -26,7 +26,7 @@ class Dagkot(db.Model):
             count += 1
 
             if count == 1:
-                yield images.get_serving_url(picture, 205)
+                yield images.get_serving_url(picture, 205, True)
             else:
                 yield images.get_serving_url(picture, 48, True)
 

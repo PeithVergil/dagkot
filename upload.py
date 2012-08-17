@@ -19,8 +19,8 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 	def post(self, dagkot_key):
 		# Generate a new upload URL for every upload request.
 		data = {
-			'upload_url' : blobstore.create_upload_url('/upload/handler/%s' % dagkot_key),
-			'status'     : 'FAILED'
+			'upload_url': blobstore.create_upload_url('/upload/handler/%s' % dagkot_key),
+			'status'    : 'FAILED'
 		}
 		
 		dagkot = Dagkot.get(dagkot_key)
@@ -40,7 +40,3 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(json.dumps(data))
-		
-# app = base.create_wsgi_app([
-#     ('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
-# ], debug=True)

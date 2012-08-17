@@ -7,17 +7,27 @@
 		<div class="span4">
 			<form id="frm_dagkot_for" method="post">
 				<div>
-					<select id="dagkot_type" name="dagkot_type">
-						<option>Thanks giving for</option>
-						<option>Happy birthday to</option>
-						<option>Prayer for</option>
-					</select>
+					{{ form.dagkot_type() }}
 				</div>
 				<div>
-					<input type="text" name="dagkot_for" id="dagkot_for" placeholder="dagkot for..." value="{{ dagkot_for }}" />
+					{{ form.dagkot_for(placeholder="dagkot for...") }}
+					{% if form.dagkot_for.errors %}
+						<ul class="errors">
+							{% for error in form.dagkot_for.errors %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 				</div>
 				<div>
-					<textarea id="dagkot_msg" name="dagkot_msg" placeholder="your message"></textarea>
+					{{ form.dagkot_msg(placeholder="your message or prayer...") }}
+					{% if form.dagkot_msg.errors %}
+						<ul class="errors">
+							{% for error in form.dagkot_msg.errors %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
 				</div>
 				<div>
 					<select id="demo-htmlselect">

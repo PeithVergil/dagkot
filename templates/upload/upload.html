@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 
 {% block head_extras %}
-<!-- Uploadify CSS -->
-<!-- <link type="text/css" rel="stylesheet" href="/css/uploadify/uploadify.css" /> -->
-<!-- Uploadify CSS -->
-
-<!-- Uploadify JS -->
-<!-- <script type="text/javascript" src="/js/uploadify/uploadify.js"></script> -->
-<!-- Uploadify JS -->
-
 <!-- File uploader JS -->
 <link type="text/css" rel="stylesheet" href="/js/fileuploader/jquery.plupload.queue/css/jquery.plupload.queue.css" />
 
@@ -45,7 +37,7 @@ $(function() {
 		// General settings
 		url           : '{{ upload_url }}',
 		runtimes      : 'html5',
-		max_file_size : '10mb',
+		max_file_size : '20mb',
 		chunk_size    : '1mb',
 		unique_names  : true,
 
