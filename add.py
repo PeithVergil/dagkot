@@ -1,7 +1,5 @@
 from google.appengine.api import users
 
-import webapp2
-
 import base
 
 from models.dagkot import Candle, Dagkot
@@ -48,7 +46,3 @@ class AddError(base.BaseRequestHandler):
             'message_content': 'There was an error in saving your dagkot. Please try again.'
         }
         self.render_html('home/landing.html', **data)
-        
-app = base.create_wsgi_app([
-    ('/add', Add), ('/add/error', AddError)
-], debug=True)

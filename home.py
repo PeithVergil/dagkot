@@ -15,7 +15,3 @@ class Home(base.BaseRequestHandler):
             data['dagkots'] = Dagkot.all().order('-dagkot_date')
         
         self.render_html('home/home.html', **data)
-        
-app = base.create_wsgi_app([
-    ('/', Home)
-], debug=True)

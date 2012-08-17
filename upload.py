@@ -1,14 +1,11 @@
 import json
 
-from google.appengine.api import images
 from google.appengine.ext import blobstore, db
 from google.appengine.ext.webapp import blobstore_handlers
 
-import webapp2
-
 import base
 
-from models.dagkot import Dagkot, Photo
+from models.dagkot import Dagkot
 
 class UploadImages(base.BaseRequestHandler):
 	def get(self, dagkot_key):
@@ -44,6 +41,6 @@ class UploadHandler(blobstore_handlers.BlobstoreUploadHandler):
 		self.response.headers['Content-Type'] = 'application/json'
 		self.response.out.write(json.dumps(data))
 		
-app = base.create_wsgi_app([
-    ('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
-], debug=True)
+# app = base.create_wsgi_app([
+#     ('/upload/images/(.+)', UploadImages), ('/upload/handler/(.+)', UploadHandler)
+# ], debug=True)

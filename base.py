@@ -2,9 +2,9 @@ import json
 
 from google.appengine.api import users
 
+import webapp2
 from webapp2 import cached_property
 from webapp2 import RequestHandler
-from webapp2 import WSGIApplication
 from webapp2_extras import jinja2
 from webapp2_extras import sessions
 
@@ -39,7 +39,7 @@ class BaseRequestHandler(RequestHandler):
     
     @cached_property
     def jinja(self):
-        return jinja2.get_jinja2(app=self.app)
+        return jinja2.get_jinja2(factory=self._jinja_factory)
 
     @cached_property
     def session(self):
@@ -51,9 +51,10 @@ class BaseRequestHandler(RequestHandler):
         
     def render_html(self, template, **params):
         context = self.get_context()
+        context.update(params)
         
-        for key, val in params.items():
-            context[key] = val
+        # for key, val in params.items():
+        #     context[key] = val
         
         tpl = self.jinja.render_template(template, **context)
         
@@ -63,8 +64,11 @@ class BaseRequestHandler(RequestHandler):
         self.response.headers['Content-Type'] = 'application/json'
         self.response.out.write(json.dumps(data))
 
-def create_wsgi_app(routes, debug=False, config={}):
-    config['webapp2_extras.sessions'] = {
-        'secret_key': 'ru#qgro%ta=lc*wohb%)rqg*^)x6hn=tr)2@&amp;4d^&amp;j%i$sae)@'
-    }
-    return WSGIApplication(routes, debug=debug, config=config)
+    def _jinja_factory(self, app):
+        j = jinja2.Jinja2(app)
+
+        j.environment.globals.update({
+            'uri_for': webapp2.uri_for
+        })
+
+        return j
