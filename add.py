@@ -16,6 +16,7 @@ class Add(base.BaseRequestHandler):
             dagkot_type = form.dagkot_type.data
             dagkot_for  = form.dagkot_for.data
             dagkot_msg  = form.dagkot_msg.data
+            dagkot_img  = form.dagkot_img.data
 
             dagkot_candle_type = self.request.get('dagkot_candle_type')
             dagkot_candle_path = self.request.get('dagkot_candle_path')
@@ -33,7 +34,10 @@ class Add(base.BaseRequestHandler):
             
                 dagkot_key = dagkot.put()
                 if dagkot_key:
-                    self.redirect('/upload/images/%s' % dagkot_key)
+                    if dagkot_img:
+                        self.redirect('/upload/images/%s' % dagkot_key)
+                    else:
+                        self.redirect('/')
                 else:
                     self.redirect('/add/error')
             else:

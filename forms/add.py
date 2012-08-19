@@ -1,4 +1,4 @@
-from wtforms import Form, SelectField, TextAreaField, TextField, validators
+from wtforms import BooleanField, Form, SelectField, TextAreaField, TextField, validators
 
 class AddForm(Form):
 	dagkot_type = SelectField('Dagkot Type', choices=[
@@ -15,3 +15,5 @@ class AddForm(Form):
 	dagkot_msg = TextAreaField('Dagkot Message', [
 		validators.required(message='Enter a short message or prayer.')
 	])
+
+	dagkot_img = BooleanField('Upload images for this dagkot.', default=True)
