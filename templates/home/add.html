@@ -3,18 +3,15 @@
 {% block head_title %}Dagkot - Add New Dagkot{% endblock head_title %}
 
 {% block content %}
-	<div class="row-fluid">
-		<div class="span4">
-			<form id="frm_dagkot_for" method="post">
-				<div>
-					<div class="cbx_uploadimages">
-						{{ form.dagkot_img() }}
-					</div>
-					<div class="lbl_uploadimages">
-						{{ form.dagkot_img.label }}
-					</div>
-					<div class="ClearBoth"></div>
-				</div>
+	<div class="row-fluid" id="home_top">
+		<div class="span12 inner">
+			<div class="hero-unit">
+				<h2>Light a Candle</h2>
+				<p>
+					In many different traditions, lighting candles is a sacred ritual. It expresses more than words can describe. It has to do with gratefulness. From time immemorial, people have lit candles in sacred places. Why should cyberspace not be sacred?
+				</p>
+				<br><br>
+				<form id="frm_dagkot_for" method="post">
 				<div>
 					{{ form.dagkot_type() }}
 				</div>
@@ -56,6 +53,15 @@
 						<strong>Anonymous</strong>
 					{% endif %}
 				</div>
+				<div style="margin-top:20px;width:290px;" class="well">
+					<div class="cbx_uploadimages">
+						{{ form.dagkot_img() }}
+					</div>
+					<div class="lbl_uploadimages">
+						<b>{{ form.dagkot_img.label }}</b>
+					</div>
+					<div class="ClearBoth"></div>
+				</div>
 				<div class="actions">
 					<input type="submit" value="Save" class="btn btn-primary" />
 				</div>
@@ -63,14 +69,6 @@
 				<input type="hidden" name="dagkot_candle_path" id="dagkot_candle_path" />
 				<input type="hidden" name="dagkot_candle_name" id="dagkot_candle_name" />
 			</form>
-		</div>
-
-		<div class="span8">
-			<div class="hero-unit">
-				<h2>Light a Candle</h2>
-				<p>
-					In many different traditions, lighting candles is a sacred ritual. It expresses more than words can describe. It has to do with gratefulness. From time immemorial, people have lit candles in sacred places. Why should cyberspace not be sacred?
-				</p>
 			</div>
 		</div>
 	</div>
