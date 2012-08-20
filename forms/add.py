@@ -4,6 +4,7 @@ class AddForm(Form):
 	dagkot_type = SelectField('Dagkot Type', choices=[
 		('Thanks giving for', 'Thanks giving for'),
 		('Happy birthday to', 'Happy birthday to'),
+		('Congratulations to', 'Congratulations to'),
 		('Prayer for', 'Prayer for')
 	])
 
