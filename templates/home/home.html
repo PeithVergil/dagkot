@@ -130,18 +130,25 @@ $(function() {
 	$('.carousel').carousel();
 
 	$('#dagkots').infinitescroll({
-		navSelector    : "#pagination",
-		nextSelector   : "#pagination a:first",
-		itemSelector   : "#dagkots li.dagkot",
+		navSelector    : '#pagination',
+		nextSelector   : '#pagination a:first',
+		itemSelector   : '#dagkots li.dagkot',
 		dataType	   : 'html',
 		debug		   : true
 	}, function(dagkots) {
-		$(this).prepend($(dagkots));
+		var newdagkots = $(dagkots);
 
-		$('#dagkots li.dagkot').wookmark({
-			autoResize: true,
-			container: $('#dagkots'),
-			offset: 10
+		newdagkots.css({
+			'background-color': '#fff68f'
+		});
+		$(this).append(newdagkots);
+
+		$('#dagkots').imagesLoaded(function() {
+			$('#dagkots li.dagkot').wookmark({
+				autoResize: true,
+				container: $('#dagkots'),
+				offset: 10
+			});
 		});
 	});
 });
