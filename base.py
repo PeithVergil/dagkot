@@ -48,13 +48,16 @@ class BaseRequestHandler(RequestHandler):
     @cached_property
     def flash(self):
         return self.session_flash
+
+    def render_string(self, template, **params):
+        context = self.get_context()
+        context.update(params)
+        
+        return self.jinja.render_template(template, **context)
         
     def render_html(self, template, **params):
         context = self.get_context()
         context.update(params)
-        
-        # for key, val in params.items():
-        #     context[key] = val
         
         tpl = self.jinja.render_template(template, **context)
         

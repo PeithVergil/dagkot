@@ -106,6 +106,9 @@
 					<li class="FloatLeft">No dagkots available.</li>
 				{% endfor %}
 			</ul>
+			<div id="pagination">
+				<a href="/dagkots/get?o=2">Next</a>
+			</div>
 		</div>
 	</div>
 {% endblock content %}
@@ -117,16 +120,34 @@
 <!-- Bootstrap JS -->
 
 <!-- Wookmark -->
+<script type="text/javascript" src="/js/wookmark/infinitescroll.js"></script>
+<script type="text/javascript" src="/js/wookmark/imagesloaded.js"></script>
 <script type="text/javascript" src="/js/wookmark/wookmark.js"></script>
 <!-- Wookmark -->
 
 <script type="text/javascript">
 $(function() {
 	$('.carousel').carousel();
+
+	$('#dagkots').infinitescroll({
+		navSelector    : "#pagination",
+		nextSelector   : "#pagination a:first",
+		itemSelector   : "#dagkots li.dagkot",
+		dataType	   : 'html',
+		debug		   : true
+	}, function(dagkots) {
+		$(this).prepend($(dagkots));
+
+		$('#dagkots li.dagkot').wookmark({
+			autoResize: true,
+			container: $('#dagkots'),
+			offset: 10
+		});
+	});
 });
 
-$(window).load(function() {
-	$('ul.dagkots li.dagkot').wookmark({
+$('#dagkots').imagesLoaded(function() {
+	$('#dagkots li.dagkot').wookmark({
 		autoResize: true,
 		container: $('#dagkots'),
 		offset: 10

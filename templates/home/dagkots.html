@@ -1,0 +1,44 @@
+<ul id="dagkots" class="dagkots">
+	{% for dagkot in dagkots %}
+		<li class="dagkot">
+			<div class="inner">
+				{% if dagkot.dagkot_pictures %}
+					<div class="hair">
+						{% for pic in dagkot.get_pictures() %}
+							<img src="{{ pic }}" />
+						{% endfor %}
+					</div>
+				{% endif %}
+				<div class="head">
+					<div class="candle-container">
+						{% with candle=dagkot.dagkot_candle %}
+							<img class="candle" src="{{ candle.candle_path }}" alt="{{ candle.candle_name }}" />
+						{% endwith %}
+					</div>
+					{{ dagkot.dagkot_type }} <strong>{{ dagkot.dagkot_for|title }}.</strong>
+					<div class="ClearBoth"></div>
+				</div>
+				<div class="body">
+					<pre>{{ dagkot.dagkot_message }}</pre>
+				</div>
+				<div class="foot">
+					{% with author=dagkot.dagkot_author %}
+						<div class="dagkot_author">
+							from
+							{% if author %}
+								<strong>{{ author }}</strong>
+							{% else %}
+								<strong>Anonymous</strong>
+							{% endif %}
+						</div>
+					{% endwith %}
+					<div class="dagkot_date">
+						{{ dagkot.dagkot_date.strftime('%b %d, %Y at %H:%M') }}
+					</div>
+				</div>
+			</div>
+		</li>
+	{% else %}
+		<li class="FloatLeft">No dagkots available.</li>
+	{% endfor %}
+</ul>
