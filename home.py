@@ -19,7 +19,7 @@ class Home(base.BaseRequestHandler):
         self.render_html('home/home.html', dagkots=dagkots)
 
 class Dagkots(base.BaseRequestHandler):
-	def get(self):
+	def _query(self):
 		try:
 			limit = int(self.request.GET['n'])
 		except KeyError:
@@ -42,3 +42,9 @@ class Dagkots(base.BaseRequestHandler):
 		    dagkots = Dagkot.all().order('dagkot_date').run(offset=offset, limit=limit)
 
 		self.render_html('home/dagkots.html', dagkots=dagkots)
+
+	def get(self):
+		self._query()
+
+	def post(self):
+		self._query()

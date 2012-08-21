@@ -123,6 +123,7 @@
 <script type="text/javascript" src="/js/wookmark/infinitescroll.js"></script>
 <script type="text/javascript" src="/js/wookmark/imagesloaded.js"></script>
 <script type="text/javascript" src="/js/wookmark/wookmark.js"></script>
+<script type="text/javascript" src="/js/wookmark/effects.js"></script>
 <!-- Wookmark -->
 
 <script type="text/javascript">
@@ -141,7 +142,12 @@ $(function() {
 		newdagkots.css({
 			'background-color': '#fff68f'
 		});
+
 		$(this).append(newdagkots);
+
+		newdagkots.animate({ 
+			backgroundColor: '#fff'
+		}, 8000);
 
 		$('#dagkots').imagesLoaded(function() {
 			$('#dagkots li.dagkot').wookmark({
