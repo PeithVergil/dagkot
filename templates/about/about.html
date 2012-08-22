@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="home">
+	    <div class="container hero">
+	        <div class="row">
+	                <div class="span1 hidden-phone">&nbsp;</div>
+	                <div class="span4">
+						<div id="myCarousel" class="carousel slide">
+						  <!-- Carousel items -->
+						  <div class="carousel-inner">
+							<div class="active item"><img src="http://linneaslights.com/wp-content/uploads/2012/01/scented-candle.jpg" width="400" height="300"></div>
+							<div class="item"><img src="http://nickbaines.files.wordpress.com/2009/06/candles.jpg" width="400" height="300"></div>
+							<div class="item"><img src="http://farm1.static.flickr.com/29/62620775_ffe8fecf18.jpg" width="400" height="300"></div>
+						  </div>
+						  <!-- Carousel nav -->
+						  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+						  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+						</div>
+	                </div> 
+					<div class="span1 hidden-phone">&nbsp;</div>
+	                <div class="span6">
+	                    <div class="phone-center">
+	                        <h1><span class="shrink50">About Dagkot</h1><!-- <span class="shrink50">Create a</span> -->
+	                        <p>
+								Dagkot is a Bisayan term which means to ignite or light up with fire. A popular ritual amongst Filipinos is to go to church, 
+								light up one or more candles, then offer a prayer. 
+							</p>
+							<p>
+								In the Visayan region, this ritual is commonly known as "dagkot", which means "to light a candle and offer a prayer." 
+								Almost all churches in the Philippines have a "dagkotanan", a place where people light up candles and pray for their intentions. 
+							</p>	
+							<p>	
+							People usually do the act of dagkot when celebrating birthdays, fiestas, thanks giving, or to commemorate loved ones that passed away. 
+							They believe that lighting a candle and offering a prayer would bring good luck and more blessings. 
+							<p>
+							Everyday, lots of people want to go to church to dagkot, but are unable to do so because of their busy schedules or other personal reasons. 
+							</p>
+							<p>
+							This Web application, Virtual Dagkot, allows them to dagkot from the comfort of their home, or even from their offices.
+							</p>
+	                        <br>
+	                        <p><a class="btn btn-primary btn-large" href="{{ uri_for('add') }}">Light a Candle Now</a></p>
+	                    </div>
+	                </div> 
+	        </div> 
+	    </div> 
+	</div>
+{% endblock content %}
