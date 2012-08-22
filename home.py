@@ -12,9 +12,9 @@ class Home(base.BaseRequestHandler):
 
         user = users.get_current_user()
         if user:
-            dagkots = dagkots.filter('dagkot_author =', user).order('dagkot_date').run(offset=offset, limit=limit)
+            dagkots = dagkots.filter('dagkot_author =', user).order('-dagkot_date').run(offset=offset, limit=limit)
         else:
-			dagkots = dagkots.order('dagkot_date').run(offset=offset, limit=limit)
+			dagkots = dagkots.order('-dagkot_date').run(offset=offset, limit=limit)
         
         self.render_html('home/home.html', dagkots=dagkots)
 
@@ -37,9 +37,9 @@ class Dagkots(base.BaseRequestHandler):
 
 		user = users.get_current_user()
 		if user:
-		    dagkots = Dagkot.all().filter('dagkot_author =', user).order('dagkot_date').run(offset=offset, limit=limit)
+		    dagkots = Dagkot.all().filter('dagkot_author =', user).order('-dagkot_date').run(offset=offset, limit=limit)
 		else:
-		    dagkots = Dagkot.all().order('dagkot_date').run(offset=offset, limit=limit)
+		    dagkots = Dagkot.all().order('-dagkot_date').run(offset=offset, limit=limit)
 
 		self.render_html('home/dagkots.html', dagkots=dagkots)
 
