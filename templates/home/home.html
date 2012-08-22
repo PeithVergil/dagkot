@@ -103,11 +103,21 @@
 						</div>
 					</li>
 				{% else %}
-					<li class="FloatLeft">No dagkots available.</li>
+					<li class="dagkot">
+						<div class="inner">
+							<div class="well well-large">
+								No dagkots available.
+							</div>
+						</div>
+					</li>
 				{% endfor %}
 			</ul>
-			<div id="pagination">
-				<a href="/dagkots/get?o=2">Next</a>
+
+			<div id="pagination" class="pagination" style="display:none">
+				<ul>
+					<li><a href="/dagkots/get?o=1" class="page_prev">&laquo;</a></li>
+					<li><a href="/dagkots/get?o=2" class="page_next">&raquo;</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -131,10 +141,13 @@ $(function() {
 
 	$('#dagkots').infinitescroll({
 		navSelector    : '#pagination',
-		nextSelector   : '#pagination a:first',
+		nextSelector   : '#pagination a.page_next',
 		itemSelector   : '#dagkots li.dagkot',
 		dataType	   : 'html',
-		debug		   : true
+		debug		   : true,
+		loading        : {
+	        finishedMsg: 'No more dagkots to load.'
+        },
 	}, function(dagkots) {
 		var newdagkots = $(dagkots);
 
@@ -145,7 +158,7 @@ $(function() {
 		$(this).append(newdagkots);
 
 		newdagkots.animate({ 
-			backgroundColor: '#fff'
+			backgroundColor: '#ffffff'
 		}, 8000);
 
 		$('#dagkots').imagesLoaded(function() {

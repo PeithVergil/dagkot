@@ -2,6 +2,14 @@
 
 {% block head_title %}Dagkot - Add New Dagkot{% endblock head_title %}
 
+{% block head_extras %}
+<style type="text/css">
+#content #frm_dagkot_for #demo-htmlselect {
+    margin-bottom: 0 !important;
+}
+</style>
+{% endblock head_extras %}
+
 {% block content %}
 	<div id="home_top">
 		<div class="inner">
@@ -11,64 +19,82 @@
 					In many different traditions, lighting candles is a sacred ritual. It expresses more than words can describe. It has to do with gratefulness. From time immemorial, people have lit candles in sacred places. Why should cyberspace not be sacred?
 				</p>
 				<br><br>
-				<form id="frm_dagkot_for" method="post">
-				<div>
-					{{ form.dagkot_type() }}
-				</div>
-				<div>
-					{{ form.dagkot_for(placeholder="dagkot for...") }}
-					{% if form.dagkot_for.errors %}
-						<ul class="errors">
-							{% for error in form.dagkot_for.errors %}
-								<li>{{ error }}</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				</div>
-				<div>
-					{{ form.dagkot_msg(placeholder="your message or prayer...") }}
-					{% if form.dagkot_msg.errors %}
-						<ul class="errors">
-							{% for error in form.dagkot_msg.errors %}
-								<li>{{ error }}</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				</div>
-				<div>
-					<select id="demo-htmlselect">
-						<option value="0" data-imagesrc="/images/candle-default.gif" selected="selected"
-							data-description="Description for candle #1">Candle 1</option>
-						<option value="1" data-imagesrc="/images/candle-type2.gif"
-							data-description="Description for candle #2">Candle 2</option>
-						<option value="2" data-imagesrc="/images/candle-type3.gif"
-							data-description="Description for candle #3">Candle 3</option>
-					</select>
-				</div>
-				<div class="author">
-					from
-					{% if user %}
-						<strong>{{ user.nickname() }}</strong>
-					{% else %}
-						<strong>Anonymous</strong>
-					{% endif %}
-				</div>
-				<div style="margin-top:20px;width:290px;" class="well">
-					<div class="cbx_uploadimages">
-						{{ form.dagkot_img() }}
+				<form id="frm_dagkot_for" method="post" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="dagkot_type">{{ form.dagkot_type.label.text }}</label>
+						<div class="controls">
+					    	{{ form.dagkot_type() }}
+					    </div>
 					</div>
-					<div class="lbl_uploadimages">
-						<b>{{ form.dagkot_img.label }}</b>
+					<div class="control-group">
+						<label class="control-label" for="dagkot_for">{{ form.dagkot_for.label.text }}</label>
+						<div class="controls">
+					    	{{ form.dagkot_for(placeholder="dagkot for...") }}
+
+					    	{% if form.dagkot_for.errors %}
+								<ul class="errors">
+									{% for error in form.dagkot_for.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+					    </div>
 					</div>
-					<div class="ClearBoth"></div>
-				</div>
-				<div class="actions">
-					<input type="submit" value="Save" class="btn btn-primary" />
-				</div>
-				<input type="hidden" name="dagkot_candle_type" id="dagkot_candle_type" />
-				<input type="hidden" name="dagkot_candle_path" id="dagkot_candle_path" />
-				<input type="hidden" name="dagkot_candle_name" id="dagkot_candle_name" />
-			</form>
+					<div class="control-group">
+						<label class="control-label" for="dagkot_msg">{{ form.dagkot_msg.label.text }}</label>
+						<div class="controls">
+					    	{{ form.dagkot_msg(placeholder="your message or prayer...") }}
+
+					    	{% if form.dagkot_msg.errors %}
+								<ul class="errors">
+									{% for error in form.dagkot_msg.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+					    </div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="demo-htmlselect">Candle Type</label>
+						<div class="controls">
+					    	<select id="demo-htmlselect">
+								<option value="0" data-imagesrc="/images/candle-default.gif" selected="selected"
+									data-description="Description for candle #1">Candle 1</option>
+								<option value="1" data-imagesrc="/images/candle-type2.gif"
+									data-description="Description for candle #2">Candle 2</option>
+								<option value="2" data-imagesrc="/images/candle-type3.gif"
+									data-description="Description for candle #3">Candle 3</option>
+							</select>
+					    </div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="dagkot_from">From</label>
+						<div class="controls">
+					    	{% if user %}
+					    		<input id="dagkot_from" type="text" value="{{ user.nickname() }}">
+							{% else %}
+								<input id="dagkot_from" type="text" value="Anonymous" disabled>
+							{% endif %}
+					    </div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<div class="well" style="float: left; margin: 0;">
+						    	<label class="checkbox">
+									{{ form.dagkot_img() }} {{ form.dagkot_img.label.text }}
+								</label>
+							</div>
+					    </div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<input type="submit" value="Save" class="btn btn-large btn-primary">
+					    </div>
+					</div>
+					<input type="hidden" name="dagkot_candle_type" id="dagkot_candle_type" />
+					<input type="hidden" name="dagkot_candle_path" id="dagkot_candle_path" />
+					<input type="hidden" name="dagkot_candle_name" id="dagkot_candle_name" />
+				</form>
 			</div>
 		</div>
 	</div>

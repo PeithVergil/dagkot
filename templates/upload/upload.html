@@ -1,21 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_extras %}
-<!-- File uploader JS -->
 <link type="text/css" rel="stylesheet" href="/js/fileuploader/jquery.plupload.queue/css/jquery.plupload.queue.css" />
-
-<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
-
-<script type="text/javascript" src="/js/fileuploader/plupload.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.html4.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.html5.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.gears.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.flash.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.silverlight.js"></script>
-<script type="text/javascript" src="/js/fileuploader/plupload.browserplus.js"></script>
-
-<script type="text/javascript" src="/js/fileuploader/jquery.plupload.queue/jquery.plupload.queue.js"></script>
-<!-- File uploader JS -->
 {% endblock head_extras %}
 
 {% block content %}
@@ -31,6 +17,20 @@
 {% endblock content %}
 
 {% block body_extras %}
+<!-- File uploader JS -->
+<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+
+<script type="text/javascript" src="/js/fileuploader/plupload.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.html4.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.html5.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.gears.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.flash.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.silverlight.js"></script>
+<script type="text/javascript" src="/js/fileuploader/plupload.browserplus.js"></script>
+
+<script type="text/javascript" src="/js/fileuploader/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<!-- File uploader JS -->
+
 <script>
 $(function() {
 	$("#uploader").pluploadQueue({

@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from google.appengine.api import users
@@ -34,6 +35,11 @@ class BaseRequestHandler(RequestHandler):
             context['auth_url'] = users.create_login_url('/')
             context['auth_txt'] = 'Login'
         context['user'] = user
+
+        today = datetime.datetime.now()
+        context['this_month'] = today.month
+        context['this_year'] = today.year
+        context['this_day'] = today.day
         
         return context
     
