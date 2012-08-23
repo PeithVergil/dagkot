@@ -97,7 +97,7 @@
 									</div>
 								{% endwith %}
 								<div class="dagkot_date">
-									{{ dagkot.dagkot_date.strftime('%b %d, %Y at %H:%M') }}
+									{{ dagkot.get_timesince() }}
 								</div>
 							</div>
 						</div>
