@@ -7,15 +7,21 @@
 	                <div class="span1 hidden-phone">&nbsp;</div>
 	                <div class="span4">
 						<div id="myCarousel" class="carousel slide">
-						  <!-- Carousel items -->
-						  <div class="carousel-inner">
-							<div class="active item"><img src="http://linneaslights.com/wp-content/uploads/2012/01/scented-candle.jpg" width="400" height="300"></div>
-							<div class="item"><img src="http://nickbaines.files.wordpress.com/2009/06/candles.jpg" width="400" height="300"></div>
-							<div class="item"><img src="http://farm1.static.flickr.com/29/62620775_ffe8fecf18.jpg" width="400" height="300"></div>
-						  </div>
-						  <!-- Carousel nav -->
-						  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-						  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							<!-- Carousel items -->
+							<div class="carousel-inner">
+								<div class="active item">
+									<img src="/images/slides/candle1.jpg" />
+								</div>
+								<div class="item">
+									<img src="/images/slides/candle2.jpg" />
+								</div>
+								<div class="item">
+									<img src="/images/slides/candle3.jpg" />
+								</div>
+							</div>
+							<!-- Carousel nav -->
+							<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 						</div>
 	                </div> 
 					<div class="span1 hidden-phone">&nbsp;</div>
@@ -47,3 +53,9 @@
 	    </div> 
 	</div>
 {% endblock content %}
+
+{% block body_extras %}
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="/js/bootstrap/bootstrap-carousel.js"></script>
+<!-- Bootstrap JS -->
+{% endblock body_extras %}
