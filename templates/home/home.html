@@ -40,19 +40,6 @@
 								<i class="icon-plus icon-white"></i>
 								Add New Dagkot
 							</a>
-							<!-- <form id="frm_dagkot_for" method="get" action="/add">
-								<img id="img_dagkot_for" src="/images/candle-default.gif" />
-								<div id="div_dagkot_for">
-									<input type="text" name="txt_dagkot_for" id="txt_dagkot_for" placeholder="dagkot for..." />
-								</div>
-								<div id="btn_dagkot_add">
-									<button class="btn btn-large btn-primary">
-										<i class="icon-plus icon-white"></i>
-										Add New Dagkot
-									</button>
-								</div>
-								<div class="ClearBoth"></div>
-							</form> -->
 						</div>
 					</div>
 				</div>
@@ -62,9 +49,9 @@
 	
 	<div class="row-fluid">
 		<div class="span12">
-			<ul id="dagkots" class="dagkots">
+			<div id="dagkots">
 				{% for dagkot in dagkots %}
-					<li class="dagkot">
+					<div class="dagkot">
 						<div class="inner">
 							{% if dagkot.dagkot_pictures %}
 								<div class="hair">
@@ -101,17 +88,17 @@
 								</div>
 							</div>
 						</div>
-					</li>
+					</div>
 				{% else %}
-					<li class="dagkot">
+					<div class="dagkot">
 						<div class="inner">
 							<div class="well well-large">
 								No dagkots available.
 							</div>
 						</div>
-					</li>
+					</div>
 				{% endfor %}
-			</ul>
+			</div>
 
 			<div id="pagination" class="pagination" style="display:none">
 				<ul>
@@ -128,54 +115,58 @@
 <script type="text/javascript" src="/js/bootstrap/bootstrap-carousel.js"></script>
 <!-- Bootstrap JS -->
 
-<!-- Wookmark -->
-<script type="text/javascript" src="/js/wookmark/infinitescroll.js"></script>
-<script type="text/javascript" src="/js/wookmark/imagesloaded.js"></script>
-<script type="text/javascript" src="/js/wookmark/wookmark.js"></script>
-<script type="text/javascript" src="/js/wookmark/effects.js"></script>
-<!-- Wookmark -->
+<!-- Masonry -->
+<script type="text/javascript" src="/js/masonry/infinitescroll.js"></script>
+<script type="text/javascript" src="/js/masonry/imagesloaded.js"></script>
+<script type="text/javascript" src="/js/masonry/masonry.js"></script>
+<script type="text/javascript" src="/js/masonry/effects.js"></script>
+<!-- Masonry -->
 
 <script type="text/javascript">
 $(function() {
 	$('.carousel').carousel();
 
-	$('#dagkots').infinitescroll({
+	var dagkots = $('#dagkots');
+
+	dagkots.imagesLoaded(function() {
+		dagkots.masonry({
+			itemSelector : '.dagkot',
+			isFitWidth   : true,
+			isAnimated   : true
+		});
+	});
+
+	dagkots.infinitescroll({
 		navSelector    : '#pagination',
 		nextSelector   : '#pagination a.page_next',
-		itemSelector   : '#dagkots li.dagkot',
+		itemSelector   : '.dagkot',
 		dataType	   : 'html',
 		debug		   : true,
 		loading        : {
-	        finishedMsg: 'No more dagkots to load.'
+	        finishedMsg: 'No more dagkots to load.',
+	        img: 'http://i.imgur.com/6RMhx.gif'
         },
-	}, function(dagkots) {
-		var newdagkots = $(dagkots);
+	}, function(results) {
+		var newdagkots = $(results);
 
+		// Hide new dagkots until they are
+		// ready to be displayed.
 		newdagkots.css({
 			'background-color': '#fff68f'
+		}).hide();
+
+		newdagkots.imagesLoaded(function() {
+			dagkots.masonry('appended', newdagkots, true);
+			
+			// Display new dagkots when all images
+			// has been loaded.
+			newdagkots.show();
+
+			// Slowly change color
+			newdagkots.animate({ 
+				backgroundColor: '#ffffff'
+			}, 8000);
 		});
-
-		$(this).append(newdagkots);
-
-		newdagkots.animate({ 
-			backgroundColor: '#ffffff'
-		}, 8000);
-
-		$('#dagkots').imagesLoaded(function() {
-			$('#dagkots li.dagkot').wookmark({
-				autoResize: true,
-				container: $('#dagkots'),
-				offset: 10
-			});
-		});
-	});
-});
-
-$('#dagkots').imagesLoaded(function() {
-	$('#dagkots li.dagkot').wookmark({
-		autoResize: true,
-		container: $('#dagkots'),
-		offset: 10
 	});
 });
 </script>
