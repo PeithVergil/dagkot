@@ -1,6 +1,7 @@
 from google.appengine.api import users
 
 import base
+import settings
 
 from models.dagkot import Dagkot
         
@@ -8,7 +9,7 @@ class Home(base.BaseRequestHandler):
     def get(self):
         dagkots = Dagkot.all()
         offset = 0
-        limit = 10
+        limit = settings.DAGKOTS_PER_PAGE
 
         user = users.get_current_user()
         if user:
@@ -23,7 +24,7 @@ class Dagkots(base.BaseRequestHandler):
 		try:
 			limit = int(self.request.GET['n'])
 		except KeyError:
-			limit = 10
+			limit = settings.DAGKOTS_PER_PAGE
 
 		try:
 			offset = int(self.request.GET['o'])
