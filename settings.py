@@ -17,3 +17,5 @@ config = {
 }
 
 debug = True
+
+DAGKOTS_PER_PAGE = 10

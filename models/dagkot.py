@@ -13,6 +13,11 @@ class Candle(db.Model):
 	candle_path = db.StringProperty()
 	candle_name = db.StringProperty()
 
+class Comment(db.Model):
+    comment_date = db.DateTimeProperty(auto_now_add=True)
+    comment_author = db.UserProperty(auto_current_user_add=True)
+    comment_message = db.StringProperty()
+
 class Dagkot(db.Model):
     dagkot_for = db.StringProperty()
     dagkot_type = db.StringProperty()
@@ -37,8 +42,7 @@ class Dagkot(db.Model):
         Returns string representing "time since" e.g.
         3 days ago, 5 hours ago etc.
         """
-        now = datetime.utcnow()
-        diff = now - self.dagkot_date
+        diff = datetime.utcnow() - self.dagkot_date
         
         periods = (
             (diff.days / 365, "year", "years"),
