@@ -30,7 +30,7 @@ class Dagkot(db.Model):
             if count == 1:
                 yield images.get_serving_url(picture, 205, True)
             else:
-                yield images.get_serving_url(picture, 48, True)
+                yield images.get_serving_url(picture, 50, True)
 
     def get_timesince(self):
         """

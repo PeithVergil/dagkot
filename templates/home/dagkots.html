@@ -5,8 +5,13 @@
 				{% if dagkot.dagkot_pictures %}
 					<div class="hair">
 						{% for pic in dagkot.get_pictures() %}
-							<img src="{{ pic }}" />
+							{% if loop.first %}
+								<img src="{{ pic }}" class="img_hero pull-left" />
+							{% else %}
+								<img src="{{ pic }}" class="img_thmb pull-left" />
+							{% endif %}
 						{% endfor %}
+						<div class="clearfix"></div>
 					</div>
 				{% endif %}
 				<div class="head">
