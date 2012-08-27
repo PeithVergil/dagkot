@@ -57,9 +57,13 @@
 								<div class="hair">
 									{% for pic in dagkot.get_pictures() %}
 										{% if loop.first %}
-											<img src="{{ pic }}" class="img_hero pull-left" />
+											<a href="/view/{{ dagkot.key() }}" title="{{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}">
+												<img src="{{ pic }}" class="img_hero pull-left" />
+											</a>
 										{% else %}
-											<img src="{{ pic }}" class="img_thmb pull-left" />
+											<a href="/view/{{ dagkot.key() }}" title="{{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}">
+												<img src="{{ pic }}" class="img_thmb pull-left" />
+											</a>
 										{% endif %}
 									{% endfor %}
 									<div class="clearfix"></div>

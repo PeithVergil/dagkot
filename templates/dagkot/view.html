@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+	Dagkot - {{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}
+{% endblock head_title %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="span12">
+			<div id="dagkot">
+				{% if dagkot.dagkot_pictures %}
+					<div class="hair">
+						{% for pic in dagkot.get_pictures_full() %}
+							<img src="{{ pic }}" />
+						{% endfor %}
+						<div class="clearfix"></div>
+					</div>
+				{% endif %}
+				<div class="head">
+					<div class="candle-container">
+						{% with candle=dagkot.dagkot_candle %}
+							<img class="candle" src="{{ candle.candle_path }}" alt="{{ candle.candle_name }}" />
+						{% endwith %}
+					</div>
+					<h1>{{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}.</h1>
+					<div class="ClearBoth"></div>
+				</div>
+				<div class="hero-unit">
+					<div class="body">
+						<pre>{{ dagkot.dagkot_message }}</pre>
+					</div>
+					<div class="foot">
+						{% with author=dagkot.dagkot_author %}
+							<div class="dagkot_author">
+								from
+								{% if author %}
+									<strong>{{ author }}</strong>
+								{% else %}
+									<strong>Anonymous</strong>
+								{% endif %}
+							</div>
+						{% endwith %}
+						<div class="dagkot_date">
+							{{ dagkot.get_timesince() }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span12">
+			<div id="disqus_thread"></div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block body_extras %}
+<script type="text/javascript">
+var disqus_identifier = '{{ dagkot.key() }}';
+var disqus_shortname  = 'virtualdagkot';
+var disqus_developer  = 1;
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endblock body_extras %}

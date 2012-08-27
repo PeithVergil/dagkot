@@ -5,13 +5,13 @@
 		<div class="span12">
 			{% if message_type == 'ERROR' %}
 				<div class="alert alert-error">
-					<strong>Oh snap!</strong> {{ message_content }}.
+					<strong>{{ message_type }}:</strong> {{ message_content }}.
 				</div>
 			{% endif %}
 
 			{% if message_type == 'SUCCESS' %}
 				<div class="alert alert-success">
-					<strong>Well done!</strong> {{ message_content }}.
+					<strong>{{ message_type }}:</strong> {{ message_content }}.
 				</div>
 			{% endif %}
 		</div>

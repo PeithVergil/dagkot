@@ -37,6 +37,10 @@ class Dagkot(db.Model):
             else:
                 yield images.get_serving_url(picture, 50, True)
 
+    def get_pictures_full(self):
+        for picture in self.dagkot_pictures:
+            yield images.get_serving_url(picture, 300, True)
+
     def get_timesince(self):
         """
         Returns string representing "time since" e.g.

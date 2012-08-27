@@ -42,6 +42,7 @@
 }
 
 #content {
+	min-height: 300px;
 	padding: @space 0;
 	
 	#home_top {
@@ -221,6 +222,52 @@
 		    text-align: center;
 		    width: 200px;
 		    z-index: 100;
+		}
+	}
+
+	#dagkot {
+		.hair {}
+		.head {
+			.candle-container {
+				.FloatLeft;
+
+				@candleheight: 75px;
+				@candlewidth: 75px;
+
+				margin: 0 10px 0 0;
+				height: @candleheight;
+				width: @candlewidth;
+
+				img {
+					height: @candleheight;
+					width: @candlewidth;
+				}
+			}
+		}
+		.hero-unit {
+			margin: 35px 0;
+
+			.body {
+				margin-bottom: 35px;
+				
+				pre {
+					background: none;
+					border: none;
+					color: inherit;
+					font-size: 18px;
+					font-weight: 200;
+					line-height: 30px;
+					padding: 0;
+					margin: 0;
+					word-break: normal;
+				}
+			}
+			.foot {
+				.dagkot_date,
+				.dagkot_author {
+					text-align: right;
+				}
+			}
 		}
 	}
 }
