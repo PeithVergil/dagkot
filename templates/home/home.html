@@ -97,9 +97,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="inner comments">
-							<a href="/view/{{ dagkot.key() }}#disqus_thread">Comments</a>
-						</div>
+						<a class="inner comments" href="/view/{{ dagkot.key() }}#disqus_thread">Comments</a>
 					</div>
 				{% else %}
 					<div class="dagkot">
@@ -135,8 +133,6 @@
 <!-- Masonry -->
 
 <script type="text/javascript">
-var disqus_shortname = 'virtualdagkot';
-
 $(function() {
 	$('.carousel').carousel();
 
@@ -182,13 +178,15 @@ $(function() {
 			}, 8000);
 
 			// Reload Disqus script for counting comments.
-			$.getScript('http://'+ disqus_shortname +'.disqus.com/count.js');
+			$.getScript('http://virtualdagkot.disqus.com/count.js');
 		});
 	});
 });
 </script>
 
 <script type="text/javascript">
+var disqus_shortname = 'virtualdagkot';
+
 (function () {
     var s = document.createElement('script'); s.async = true;
     s.type = 'text/javascript';

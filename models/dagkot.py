@@ -39,7 +39,7 @@ class Dagkot(db.Model):
 
     def get_pictures_full(self):
         for picture in self.dagkot_pictures:
-            yield images.get_serving_url(picture, 300, True)
+            yield images.get_serving_url(picture, 600, True)
 
     def get_timesince(self):
         """
