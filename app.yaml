@@ -13,6 +13,12 @@ handlers:
   static_dir: less
 - url: /images
   static_dir: images
+- url: /mine
+  script: main.app
+  login: required
+- url: /mine/next
+  script: main.app
+  login: required
 - url: /.*
   script: main.app
 
