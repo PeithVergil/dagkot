@@ -1,0 +1,52 @@
+<div id="dagkots">
+	{% for dagkot in dagkots %}
+		<div class="dagkot">
+			<div class="inner">
+				{% if dagkot.dagkot_pictures %}
+					<div class="hair">
+						{% for pic in dagkot.get_pictures() %}
+							{% if loop.first %}
+								<a href="/view/{{ dagkot.key() }}" title="{{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}">
+									<img src="{{ pic }}" class="img_hero pull-left" />
+								</a>
+							{% else %}
+								<a href="/view/{{ dagkot.key() }}" title="{{ dagkot.dagkot_type }} {{ dagkot.dagkot_for|title }}">
+									<img src="{{ pic }}" class="img_thmb pull-left" />
+								</a>
+							{% endif %}
+						{% endfor %}
+						<div class="clearfix"></div>
+					</div>
+				{% endif %}
+				<div class="head">
+					<div class="candle-container">
+						{% with candle=dagkot.dagkot_candle %}
+							<img class="candle" src="{{ candle.candle_path }}" alt="{{ candle.candle_name }}" />
+						{% endwith %}
+					</div>
+					{{ dagkot.dagkot_type }} <strong>{{ dagkot.dagkot_for|title }}.</strong>
+					<div class="ClearBoth"></div>
+				</div>
+				<div class="body">
+					<pre>{{ dagkot.dagkot_message }}</pre>
+				</div>
+				<div class="foot">
+					{% with author=dagkot.dagkot_author %}
+						<div class="dagkot_author">
+							from
+							{% if author %}
+								<strong>{{ author }}</strong>
+							{% else %}
+								<strong>Anonymous</strong>
+							{% endif %}
+						</div>
+					{% endwith %}
+					<div class="dagkot_date">
+						{{ dagkot.get_timesince() }}
+					</div>
+				</div>
+			</div>
+			<a class="inner comments" href="/view/{{ dagkot.key() }}#disqus_thread">Comments</a>
+		</div>
+	{% endfor %}
+</div>
