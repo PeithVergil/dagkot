@@ -5,6 +5,7 @@ class AddForm(Form):
 		('Thanks giving for', 'Thanks giving for'),
 		('Happy birthday to', 'Happy birthday to'),
 		('Congratulations to', 'Congratulations to'),
+		('In memory of', 'In memory of'),
 		('Prayer for', 'Prayer for')
 	])
 
