@@ -33,7 +33,8 @@ class ViewAll(base.BaseRequestHandler):
 		offset = 0
 		dagkots = Dagkot.all().order('-dagkot_date').run(offset=offset, limit=limit)
 
-		self.render_html('dagkot/view-all.html', dagkots=dagkots)
+		self.render_html('dagkot/view-all.html',
+			dagkots=dagkots, current_page='ALL_DAGKOTS')
 
 class ViewAllNext(base.BaseRequestHandler):
 	def _query(self, page):
@@ -67,7 +68,8 @@ class ViewMine(base.BaseRequestHandler):
 		
 		dagkots = Dagkot.all().filter('dagkot_author =', user).order('-dagkot_date').run(offset=offset, limit=limit)
 
-		self.render_html('dagkot/view-mine.html', dagkots=dagkots)
+		self.render_html('dagkot/view-mine.html',
+			dagkots=dagkots, current_page='MY_DAGKOTS')
 
 class ViewMineNext(base.BaseRequestHandler):
 	def _query(self, page):

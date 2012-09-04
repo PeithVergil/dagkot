@@ -70,15 +70,15 @@
             
             <div class="nav-collapse">
               <ul class="nav pull-right">
-                <li>
+                <li {% if current_page == 'ALL_DAGKOTS' %}class="active"{% endif %}>
                   <a href="{{ uri_for('home') }}">All Dagkots</a>
                 </li>
                 {% if user %}
-                  <li>
+                  <li {% if current_page == 'MY_DAGKOTS' %}class="active"{% endif %}>
                     <a href="{{ uri_for('mine') }}">My Dagkots</a>
                   </li>
                 {% endif %}
-                <li>
+                <li {% if current_page == 'ABOUT' %}class="active"{% endif %}>
                   <a href="{{ uri_for('about') }}">About</a>
                 </li>
                 <li class="divider-vertical"></li>
