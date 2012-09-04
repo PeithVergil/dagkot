@@ -71,7 +71,7 @@
 						<label class="control-label" for="dagkot_from">From</label>
 						<div class="controls">
 					    	{% if user %}
-					    		<input id="dagkot_from" type="text" value="{{ user.nickname() }}">
+					    		<input id="dagkot_from" type="text" value="{{ user.nickname() }}" disabled>
 							{% else %}
 								<input id="dagkot_from" type="text" value="Anonymous" disabled>
 							{% endif %}
